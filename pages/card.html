@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+        }
+        /*body{*/
+        /*display: flex;*/
+        /*justify-content: center;*/
+        /*}*/
+        .header{
+            height: 50px;
+            width: 95%;
+            margin-top: 10px;
+            /*border: 1px solid red;*/
+            margin-left: 2.5%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .header_item{
+            width: 420px;
+            height: 50px;
+            background-image: linear-gradient(36deg, #171752 0%, #283BA2 60%, #1668FF 100%);
+            line-height: 50px;
+            border-bottom: 1px solid grey;
+        }
+        .header_item img{
+            width: 40px;
+            height: 40px;
+
+            margin: 5px;
+            border-radius: 20px;
+        }
+        .header_item span{
+            color: springgreen;
+            font-weight: bold;
+            font-size: 22px;
+            margin-right: 20px;
+            float: right;
+            display: inline;
+        }
+        .header_item span i{
+            color: orange;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+
+
+
+        /*主内容*/
+        .main_content {
+            display: flex;
+            justify-content: space-around;
+            height: 84%;
+            margin-top: 2%;
+            /*border: 1px solid red;*/
+        }
+        /*左内容*/
+        .left_content {
+            width: 30%;
+            height: 100%;
+            border: 1px solid #0b6379;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+        #content1{
+            width: 95%;
+            height: 45%;border: 1px solid #0b6379;
+        }
+        #content2{
+            width: 95%;
+            height: 45%;border: 1px solid #0b6379;
+        }
+        .img_header img {
+            width: 100%;
+            height: 100%
+        }
+        .stu_info span:nth-child(1) {
+            position: absolute;
+            margin: 6% 0 0 6%;
+        }
+        .stu_info span:nth-child(2) {
+            position: absolute;
+            margin: 6% 0 0 58%
+        }
+        .stu_info span:nth-child(3) {
+            position: absolute;
+            margin: 17% 0 0 6%;
+        }
+        .stu_info span:nth-child(4) {
+            position: absolute;
+            margin: 17% 0 0 58%
+        }
+        .stu_info span:nth-child(5) {
+            position: absolute;
+            margin: 28% 0 0 6%
+        }
+        .stu_info span:nth-child(6) {
+            position: absolute;
+            margin: 39% 0 0 6%
+        }
+        .stu_info span:nth-child(7) {
+            position: absolute;
+            margin: 50% 0 0 6%
+        }
+        .stu_info input {
+            width: 30%;
+            border: 0;
+            margin-left: 1%;
+            height: 20px;
+            margin-top: 1%
+        }
+
+        .stu_info span {
+            color: #54DFE3;
+            font-size: 15px;
+            margin-left: 1%
+        }
+        /*右内容*/
+        .right_content {
+            width: 65%;
+            height: 100%;
+            border: 1px solid #0b6379;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+        #content {
+            width: 95%;
+            height: 45%;
+            border: 1px solid #0b6379;
+        }
+        #content_bottom {
+            width: 95%;
+            height: 45%;
+            border: 1px solid #0b6379;
+        }
+
+        .left_content span:nth-child(1){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 0 0 5px;
+            top:-5px;
+            left:-5px;
+        }
+        .left_content span:nth-child(2){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 5px 0 0;
+            top:-5px;
+            right:-5px;
+        }
+        .left_content span:nth-child(3){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0 5px 5px 0;
+            bottom:-5px;
+            right:-5px;
+        }
+        .left_content span:nth-child(4){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0px 0px 5px 5px;
+            bottom:-5px;
+            left:-5px;
+        }
+        .right_content span:nth-child(1){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 0 0 5px;
+            top:-5px;
+            left:-5px;
+        }
+        .right_content span:nth-child(2){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 5px 0 0;
+            top:-5px;
+            right:-5px;
+        }
+        .right_content span:nth-child(3){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0px 5px 5px 0;
+            bottom:-5px;
+            right:-5px;
+        }
+        .right_content span:nth-child(4){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0 0 5px 5px;
+            bottom:-5px;
+            left:-5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header_item">
+        <img src="../img/stu.png" alt="11111111">
+        <span>34875人 <i>学校总人数</i></span>
+    </div>
+    <div class="header_item">
+        <img src="../img/rmb.png" alt="11111111">
+        <span>￥1485元 <i>人均消费</i></span>
+    </div>
+    <div class="header_item">
+        <img src="../img/stu.png" alt="11111111">
+        <span>248万册 <i>图书馆馆藏数</i></span>
+    </div>
+</div>
+<div class="main_content">
+    <div class="right_content" style="position: relative">
+        <!--四个角加粗-->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="content"></div>
+        <div id="content_bottom"></div>
+    </div>
+    <div class="left_content" style="position: relative">
+        <!--四个角加粗-->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="content1"></div>
+        <div id="content2"></div>
+    </div>
+</div>
+</body>
+<!--content_bottom-->
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content_bottom'));
+
+            var option = {
+                tooltip : {
+                    trigger: 'axis'
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                legend: {
+                    data:['馆藏数','借阅量']
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['安卓教程','PHP教程','HTML教程','C语言教程','java教程','Python教程','C#教程','javascript教程','Jquery教程','SSM教程','SSH教程','项目实战']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name : '馆藏数',
+                        axisLabel : {
+                            formatter: '{value} 万'
+                        }
+                    },
+                    {
+                        type : 'value',
+                        name : '借阅量',
+                        axisLabel : {
+                            formatter: '{value} 千'
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'馆藏数',
+                        type:'bar',
+                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                    },
+                    {
+                        name:'借阅量',
+                        type:'line',
+                        yAxisIndex: 1,
+                        data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                    }
+                ]
+            };
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<!--content1-->
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content1'));
+            var option = {
+                title : {
+                    text: '',
+                    subtext: '',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:['购物','医疗','水费充值','打印','其他']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'所占比例',
+                        type:'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[
+                            {value:335, name:'购物'},
+                            {value:310, name:'医疗'},
+                            {value:234, name:'水费充值'},
+                            {value:135, name:'打印'},
+                            {value:1548, name:'其他'}
+                        ]
+                    }
+                ]
+            };
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+
+
+<!--content2-->
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content2'));
+            var option = {
+                title : {
+                    text: '',
+                    subtext: '',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:['第一餐厅','第二餐厅','商业街','便利店','快餐店']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'所占比例',
+                        type:'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[
+                            {value:335, name:'第一餐厅'},
+                            {value:310, name:'第二餐厅'},
+                            {value:234, name:'商业街'},
+                            {value:135, name:'便利店'},
+                            {value:1548, name:'快餐店'}
+                        ]
+                    }
+                ]
+            };
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+
+
+
+<!--content-->
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content'));
+
+            var option = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data:['食堂','水费充值','超市','电费充值','班车','医务室','洗衣机','其他','人均消费']
+                },
+                toolbox: {
+                    show : true,
+                    orient: 'vertical',
+                    x: 'right',
+                    y: 'center',
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['周一','周二','周三','周四','周五','周六','周日']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'食堂',
+                        type:'bar',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'水费充值',
+                        type:'bar',
+                        stack: '广告',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'超市',
+                        type:'bar',
+                        stack: '广告',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'电费充值',
+                        type:'bar',
+                        stack: '广告',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'班车',
+                        type:'bar',
+                        data:[862, 1018, 964, 1026, 1679, 1600, 1570],
+                        markLine : {
+                            itemStyle:{
+                                normal:{
+                                    lineStyle:{
+                                        type: 'dashed'
+                                    }
+                                }
+                            },
+                            data : [
+                                [{type : 'min'}, {type : 'max'}]
+                            ]
+                        }
+                    },
+                    {
+                        name:'医务室',
+                        type:'bar',
+                        barWidth : 5,
+                        stack: '班车',
+                        data:[620, 732, 701, 734, 1090, 1130, 1120]
+                    },
+                    {
+                        name:'洗衣机',
+                        type:'bar',
+                        stack: '班车',
+                        data:[120, 132, 101, 134, 290, 230, 220]
+                    },
+                    {
+                        name:'其他',
+                        type:'bar',
+                        stack: '班车',
+                        data:[60, 72, 71, 74, 190, 130, 110]
+                    },
+                    {
+                        name:'人均消费',
+                        type:'bar',
+                        stack: '班车',
+                        data:[62, 82, 91, 84, 109, 110, 120]
+                    }
+                ]
+            };
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script src="../layui/layui.js"></script>
+<script language="javascript">
+    //    //                        禁止浏览器缩放
+    //    var scrollFunc=function(e){
+    //        e=e || window.event;
+    //        if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+    //            event.returnValue=false;
+    //        }else if(e.detail){//Firefox
+    //            event.returnValue=false;
+    //        }
+    //    };
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
+    //        动态设置高度
+    $(function () {
+        var height = $(window).height();
+        $("body").height(height);
+//        $("#content").height(height-70);
+    })
+</script>
+<script>
+    layui.use('element', function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+</html>

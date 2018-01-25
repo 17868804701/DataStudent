@@ -3,35 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>大数据分析模板</title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
     <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
-    <script language="javascript">
-        //                禁止浏览器缩放
-        //        var scrollFunc=function(e){
-        //            e=e || window.event;
-        //            if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
-        //                event.returnValue=false;
-        //            }else if(e.detail){//Firefox
-        //                event.returnValue=false;
-        //            }
-        //        };
-        /*注册事件*/
-        if (document.addEventListener) {
-            document.addEventListener('DOMMouseScroll', scrollFunc, false);
-        }//W3C
-        window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
-        //        动态设置高度
-        $(function () {
-            var height = $(window).height();
-            $("body").height(height);
-        })
-    </script>
     <style>
         /*全局css*/
         body, html {
             width: 100%;
             height: 100%;
-            background: url("img/body_bg.png");
+            background: url("../img/body_bg.png");
             background-size: 100% 100%;
         }
 
@@ -42,13 +22,14 @@
 
         /*头部*/
         header {
-            height: 13%;
-            width: 100%;
+            height: 11%;
+            width: 97%;
+            margin-left: 1.5%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: space-around;
+            border: 0px solid white;
         }
-
         header img {
             width: 50%;
             position: absolute;
@@ -60,8 +41,7 @@
             display: flex;
             justify-content: space-around;
             height: 87%;
-            border: 0 solid white;
-            margin-top: -1%;
+            /*border: 1px solid white;*/
         }
 
         /*左内容*/
@@ -211,12 +191,71 @@
             margin-left: 2.5%;
             margin-top: 2%;
         }
+        .layui-select-title input{
+            background: none!important;
+            border: 1px solid #0b6379;
+            color: springgreen;
+        }
     </style>
 </head>
 <body>
 <header>
-    <!--<img src="https://img.alicdn.com/tps/TB1Pg3pPXXXXXcxXpXXXXXXXXXX-1920-1080.gif" alt="">-->
-    <!--<h2 style="margin-top: -3%;color: white">Eurasia人物画像数据分析</h2>-->
+    <form action="" class="layui-form">
+        <div class="layui-form-item" style="margin-left: -30px">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold">搜索条件:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: -10px;" >
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择分院</option>
+                        <option value="0">信息工程学院</option>
+                        <option value="1">会计学院</option>
+                        <option value="2">建筑学院</option>
+                        <option value="3">音乐学院</option>
+                        <option value="4">高职学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择社区</option>
+                        <option value="0">第一青年社区</option>
+                        <option value="1">第二青年社区</option>
+                        <option value="2">第三青年社区</option>
+                        <option value="3">第四青年社区</option>
+                        <option value="4">德鲁克社区</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择专业</option>
+                        <option value="0">软件工程</option>
+                        <option value="1">通信工程</option>
+                        <option value="2">土木工程</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                 <a class="layui-btn" style="background: orange;border-radius: 30px">立即搜索</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </header>
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div class="main_content">
@@ -330,7 +369,7 @@
 </div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表
-    var myChart = echarts.init(document.getElementById('data'));
+    var myChart = echarts.init(document.getElementById('content_bottom'));
 
     var option = {
         title: {
@@ -703,7 +742,7 @@
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表
-    var myChart = echarts.init(document.getElementById('content_bottom'));
+    var myChart = echarts.init(document.getElementById('data'));
 
     var option = {
         title: {
@@ -838,6 +877,82 @@
     }, 2000);
     // 为echarts对象加载数据
     myChart.setOption(option);
+</script>
+
+
+
+<script src="../layui/layui.js"></script>
+<script language="javascript">
+    //    //                        禁止浏览器缩放
+    //    var scrollFunc=function(e){
+    //        e=e || window.event;
+    //        if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+    //            event.returnValue=false;
+    //        }else if(e.detail){//Firefox
+    //            event.returnValue=false;
+    //        }
+    //    };
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
+    //        动态设置高度
+    $(function () {
+        var height = $(window).height();
+        $("body").height(height);
+//        $("#content").height(height-70);
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
 </script>
 </body>
 </html>
