@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>疑似违规用电</title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <style>
+        /*全局css*/
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: url("../img/body_bg.png");
+            background-size: 100% 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*头部*/
+        header {
+            height: 11%;
+            width: 97%;
+            margin-left: 1.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 0px solid white;
+        }
+        header img {
+            width: 50%;
+            position: absolute;
+            margin-top: 1%
+        }
+
+        /*主内容*/
+        .main_content {
+            /*display: flex;*/
+            /*justify-content: space-around;*/
+            width: 97%;
+            margin-left: 1.5%;
+            height: 87%;
+            /*border: 1px solid white;*/
+        }
+        .stu_info span {
+            color: #54DFE3;
+            font-size: 15px;
+            margin-left: 1%
+        }
+
+        h4 {
+            margin-top: 5px
+        }
+
+        .layui-select-title input{
+            background: none!important;
+            border: 1px solid #0b6379;
+            color: springgreen;
+        }
+        th{
+            text-align: center!important;
+            color: orange!important;
+        }
+        td{
+            text-align: center!important;
+            color: springgreen!important;
+            font-weight: bold;!important;
+        }
+        tr:hover{
+            background: none!important;
+        }
+        table{
+            background: none!important;
+        }
+        tr,td,th{
+            border: 1px solid #0b6379!important;
+        }
+        .set{
+            color: #1E9FFF!important;
+        }
+        .warning{
+            color: #FFB800!important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <form action="" class="layui-form">
+        <div class="layui-form-item" style="margin-left: -30px">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold">搜索条件:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名或宿舍号" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: -10px;" >
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择分院</option>
+                        <option value="0">信息工程学院</option>
+                        <option value="1">会计学院</option>
+                        <option value="2">建筑学院</option>
+                        <option value="3">音乐学院</option>
+                        <option value="4">高职学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择社区</option>
+                        <option value="0">第一青年社区</option>
+                        <option value="1">第二青年社区</option>
+                        <option value="2">第三青年社区</option>
+                        <option value="3">第四青年社区</option>
+                        <option value="4">德鲁克社区</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择专业</option>
+                        <option value="0">软件工程</option>
+                        <option value="1">通信工程</option>
+                        <option value="2">土木工程</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <a class="layui-btn  layui-btn-sm" style="background: orange;border-radius: 30px;margin-top: 5px">立即搜索</a>
+                    <a class="layui-btn layui-btn-sm" style="background: orange;border-radius: 30px;margin-top: 5px">发起预警</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</header>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div class="main_content" style="border: 0px solid red" id="content3">
+
+</div>
+
+
+<script src="../layui/layui.js"></script>
+<script language="javascript">
+    //    //                        禁止浏览器缩放
+    //    var scrollFunc=function(e){
+    //        e=e || window.event;
+    //        if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+    //            event.returnValue=false;
+    //        }else if(e.detail){//Firefox
+    //            event.returnValue=false;
+    //        }
+    //    };
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
+    //        动态设置高度
+    $(function () {
+        var height = $(window).height();
+        $("body").height(height);
+//        $("#content").height(height-70);
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
+</script>
+
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar' ,// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content3'));
+            var option = {
+                title :{
+                    text : '违规用电预警（单位：度）',
+                    subtext : ''
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: function (params){
+                        return params[0].name + ' : '
+                            + (params[2].value - params[1].value > 0 ? '+' : '-')
+                            + params[0].value + '<br/>'
+                            + params[2].seriesName + ' : ' + params[2].value + '<br/>'
+                            + params[3].seriesName + ' : ' + params[3].value + '<br/>'
+                    }
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                legend: {
+                    data:['本周', '上周'],
+                    selectedMode:false
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['周一','周二','周三','周四','周五','周六','周日']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        min : 200,
+                        max : 450
+                    }
+                ],
+                series : [
+                    {
+                        name:'本周',
+                        type:'line',
+                        data:[400, 374, 251, 300, 420, 400, 440]
+                    },
+                    {
+                        name:'上周',
+                        type:'line',
+                        symbol:'none',
+                        itemStyle:{
+                            normal:{
+                                lineStyle: {
+                                    width:1,
+                                    type:'dashed'
+                                }
+                            }
+                        },
+                        data:[320, 332, 301, 334, 360, 330, 350]
+                    },
+                    {
+                        name:'上周2',
+                        type:'bar',
+                        stack: '1',
+                        barWidth: 6,
+                        itemStyle:{
+                            normal:{
+                                color:'rgba(0,0,0,0)'
+                            },
+                            emphasis:{
+                                color:'rgba(0,0,0,0)'
+                            }
+                        },
+                        data:[320, 332, 251, 300, 360, 330, 350]
+                    },
+                    {
+                        name:'变化',
+                        type:'bar',
+                        stack: '1',
+                        data:[
+                            80, 42,
+                            {value : 50, itemStyle:{ normal:{color:'red'}}},
+                            {value : 34, itemStyle:{ normal:{color:'red'}}},
+                            60, 70, 90
+                        ]
+                    }
+                ]
+            };
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+</body>
+</html>

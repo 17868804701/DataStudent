@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失联预警</title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <style>
+        /*全局css*/
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: url("../img/body_bg.png");
+            background-size: 100% 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*头部*/
+        header {
+            height: 11%;
+            width: 97%;
+            margin-left: 1.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 0px solid white;
+        }
+        header img {
+            width: 50%;
+            position: absolute;
+            margin-top: 1%
+        }
+
+        /*主内容*/
+        .main_content {
+            display: flex;
+            justify-content: space-around;
+            width: 97%;
+            margin-left: 1.5%;
+            height: 87%;
+            /*border: 1px solid white;*/
+        }
+        /*左内容*/
+        .left_content {
+            width: 30%;
+            height: 100%;
+            border: 1px solid #0b6379;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+        #content1{
+            width: 95%;
+            height: 45%;border: 1px solid #0b6379;
+        }
+        #content2{
+            width: 95%;
+            height: 45%;border: 1px solid #0b6379;
+        }
+        /*右内容*/
+        .right_content {
+            width: 65%;
+            height: 100%;
+            border: 1px solid #0b6379;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+        #content {
+            width: 95%;
+            height: 45%;
+            border: 1px solid #0b6379;
+        }
+        #content_bottom {
+            width: 95%;
+            height: 45%;
+            border: 1px solid #0b6379;
+        }
+
+        .left_content span:nth-child(1){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 0 0 5px;
+            top:-5px;
+            left:-5px;
+        }
+        .left_content span:nth-child(2){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 5px 0 0;
+            top:-5px;
+            right:-5px;
+        }
+        .left_content span:nth-child(3){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0 5px 5px 0;
+            bottom:-5px;
+            right:-5px;
+        }
+        .left_content span:nth-child(4){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0px 0px 5px 5px;
+            bottom:-5px;
+            left:-5px;
+        }
+        .right_content span:nth-child(1){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 0 0 5px;
+            top:-5px;
+            left:-5px;
+        }
+        .right_content span:nth-child(2){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 5px 5px 0 0;
+            top:-5px;
+            right:-5px;
+        }
+        .right_content span:nth-child(3){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0px 5px 5px 0;
+            bottom:-5px;
+            right:-5px;
+        }
+        .right_content span:nth-child(4){
+            position: absolute;
+            padding:15px;
+            border-style: solid;
+            border-color: #02C2E1;
+            border-width: 0 0 5px 5px;
+            bottom:-5px;
+            left:-5px;
+        }
+        .stu_info span {
+            color: #54DFE3;
+            font-size: 15px;
+            margin-left: 1%
+        }
+
+        h4 {
+            margin-top: 5px
+        }
+
+        .layui-select-title input{
+            background: none!important;
+            border: 1px solid #0b6379;
+            color: springgreen;
+        }
+        th{
+            text-align: center!important;
+            color: orange!important;
+        }
+        td{
+            text-align: center!important;
+            color: springgreen!important;
+            font-weight: bold;!important;
+        }
+        tr:hover{
+            background: none!important;
+        }
+        table{
+            background: none!important;
+        }
+        tr,td,th{
+            border: 1px solid #0b6379!important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <form action="" class="layui-form">
+        <div class="layui-form-item" style="margin-left: -30px">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold">搜索条件:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: -10px;" >
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择分院</option>
+                        <option value="0">信息工程学院</option>
+                        <option value="1">会计学院</option>
+                        <option value="2">建筑学院</option>
+                        <option value="3">音乐学院</option>
+                        <option value="4">高职学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择社区</option>
+                        <option value="0">第一青年社区</option>
+                        <option value="1">第二青年社区</option>
+                        <option value="2">第三青年社区</option>
+                        <option value="3">第四青年社区</option>
+                        <option value="4">德鲁克社区</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择专业</option>
+                        <option value="0">软件工程</option>
+                        <option value="1">通信工程</option>
+                        <option value="2">土木工程</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <a class="layui-btn  layui-btn-sm" style="background: orange;border-radius: 30px;margin-top: 5px">立即搜索</a>
+                    <a class="layui-btn layui-btn-sm" style="background: orange;border-radius: 30px;margin-top: 5px">发起预警</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</header>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div class="main_content" style="border: 0px solid red" >
+    <div class="right_content" style="position: relative">
+        <!--四个角加粗-->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="content"></div>
+        <div id="content_bottom"></div>
+    </div>
+    <div class="left_content" style="position: relative">
+        <!--四个角加粗-->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="content1"></div>
+        <div id="content2"></div>
+    </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script language="javascript">
+    //    //                        禁止浏览器缩放
+    //    var scrollFunc=function(e){
+    //        e=e || window.event;
+    //        if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+    //            event.returnValue=false;
+    //        }else if(e.detail){//Firefox
+    //            event.returnValue=false;
+    //        }
+    //    };
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
+    //        动态设置高度
+    $(function () {
+        var height = $(window).height();
+        $("body").height(height);
+//        $("#content").height(height-70);
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar' ,// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content1'));
+            var option = {
+                title : {
+                    text: '门禁次数',
+                    subtext: '',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:['东大门','西大门','南大门','宿舍门','教学区']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'访问来源',
+                        type:'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[
+                            {value:335, name:'东大门'},
+                            {value:310, name:'西大门'},
+                            {value:234, name:'南大门'},
+                            {value:135, name:'宿舍门'},
+                            {value:1548, name:'教学区'}
+                        ]
+                    }
+                ]
+            };
+
+
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar' ,// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content'));
+            var option = {
+                tooltip : {
+                    trigger: 'axis'
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                legend: {
+                    data:['门禁次数','消费次数','缺勤次数']
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name : '门禁/消费/次数',
+                        axisLabel : {
+                            formatter: '{value} 次'
+                        }
+                    },
+                    {
+                        type : 'value',
+                        name : '缺勤次数',
+                        axisLabel : {
+                            formatter: '{value} 次'
+                        }
+                    }
+                ],
+                series : [
+
+                    {
+                        name:'门禁次数',
+                        type:'bar',
+                        data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                    },
+                    {
+                        name:'消费次数',
+                        type:'bar',
+                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                    },
+                    {
+                        name:'缺勤次数',
+                        type:'line',
+                        yAxisIndex: 1,
+                        data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                    }
+                ]
+            };
+
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar' ,// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content_bottom'));
+            var option = {
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['周一','周二','周三','周四','周五','周六','周日']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'邮件营销',
+                        type:'line',
+                        stack: '总量',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'联盟广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'视频广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'直接访问',
+                        type:'line',
+                        stack: '总量',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'搜索引擎',
+                        type:'line',
+                        stack: '总量',
+                        data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
+
+
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar' ,// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content2'));
+            var option = {
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'center',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'访问来源',
+                        type:'pie',
+                        radius : ['50%', '70%'],
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            },
+                            emphasis : {
+                                label : {
+                                    show : true,
+                                    position : 'center',
+                                    textStyle : {
+                                        fontSize : '30',
+                                        fontWeight : 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        data:[
+                            {value:335, name:'直接访问'},
+                            {value:310, name:'邮件营销'},
+                            {value:234, name:'联盟广告'},
+                            {value:135, name:'视频广告'},
+                            {value:1548, name:'搜索引擎'}
+                        ]
+                    }
+                ]
+            };
+
+
+
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
+
+
+
+
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+</body>
+</html>

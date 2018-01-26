@@ -38,7 +38,6 @@
         .header_item img{
             width: 40px;
             height: 40px;
-
             margin: 5px;
             border-radius: 20px;
         }
@@ -55,10 +54,6 @@
             font-weight: bold;
             font-size: 15px;
         }
-
-
-
-
         /*主内容*/
         .main_content {
             display: flex;
@@ -150,7 +145,6 @@
             height: 45%;
             border: 1px solid #0b6379;
         }
-
         .left_content span:nth-child(1){
             position: absolute;
             padding:15px;
@@ -223,7 +217,6 @@
             bottom:-5px;
             left:-5px;
         }
-
     </style>
 </head>
 <body>
@@ -414,66 +407,104 @@
         [
             'echarts',
             'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
-            'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
         ],
         function (ec) {
             // 基于准备好的dom，初始化echarts图表
             var myChart = ec.init(document.getElementById('content_bottom'));
 
             var option = {
+                title : {
+                    text: '生源地学生数量分布',
+                    subtext: '',
+                    x:'center'
+                },
                 tooltip : {
-                    trigger: 'axis'
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    x:'left',
+                    data:['学生数量']
+                },
+                dataRange: {
+                    min: 0,
+                    max: 2500,
+                    x: 'left',
+                    y: 'bottom',
+                    text:['高','低'],           // 文本，默认为数值文本
+                    calculable : true
                 },
                 toolbox: {
-                    show : true,
+                    show: true,
+                    orient : 'vertical',
+                    x: 'right',
+                    y: 'center',
                     feature : {
                         mark : {show: true},
                         dataView : {show: true, readOnly: false},
-                        magicType: {show: true, type: ['line', 'bar']},
                         restore : {show: true},
                         saveAsImage : {show: true}
                     }
                 },
-                calculable : true,
-                legend: {
-                    data:['人口数','党员数量']
+                roamController: {
+                    show: true,
+                    x: 'right',
+                    mapTypeControl: {
+                        'china': true
+                    }
                 },
-                xAxis : [
-                    {
-                        type : 'category',
-                        data : ['浙江省','山东省','河南省','广东省','山西省','安徽省','江苏省','黑龙江省','湖南省','河北省','山西省','云南省']
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value',
-                        name : '人口数',
-                        axisLabel : {
-                            formatter: '{value} 千'
-                        }
-                    },
-                    {
-                        type : 'value',
-                        name : '党员数量',
-                        axisLabel : {
-                            formatter: '{value} 个'
-                        }
-                    }
-                ],
                 series : [
                     {
-                        name:'人口数',
-                        type:'bar',
-                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                    },
-                    {
-                        name:'党员数量',
-                        type:'line',
-                        yAxisIndex: 1,
-                        data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                        name: '学生数量',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        itemStyle:{
+                            normal:{label:{show:true}},
+                            emphasis:{label:{show:true}}
+                        },
+                        data:[
+                            {name: '北京',value: Math.round(Math.random()*1000)},
+                            {name: '天津',value: Math.round(Math.random()*1000)},
+                            {name: '上海',value: Math.round(Math.random()*1000)},
+                            {name: '重庆',value: Math.round(Math.random()*1000)},
+                            {name: '河北',value: Math.round(Math.random()*1000)},
+                            {name: '河南',value: Math.round(Math.random()*1000)},
+                            {name: '云南',value: Math.round(Math.random()*1000)},
+                            {name: '辽宁',value: Math.round(Math.random()*1000)},
+                            {name: '黑龙江',value: Math.round(Math.random()*1000)},
+                            {name: '湖南',value: Math.round(Math.random()*1000)},
+                            {name: '安徽',value: Math.round(Math.random()*1000)},
+                            {name: '山东',value: Math.round(Math.random()*1000)},
+                            {name: '新疆',value: Math.round(Math.random()*1000)},
+                            {name: '江苏',value: Math.round(Math.random()*1000)},
+                            {name: '浙江',value: Math.round(Math.random()*1000)},
+                            {name: '江西',value: Math.round(Math.random()*1000)},
+                            {name: '湖北',value: Math.round(Math.random()*1000)},
+                            {name: '广西',value: Math.round(Math.random()*1000)},
+                            {name: '甘肃',value: Math.round(Math.random()*1000)},
+                            {name: '山西',value: Math.round(Math.random()*1000)},
+                            {name: '内蒙古',value: Math.round(Math.random()*1000)},
+                            {name: '陕西',value: Math.round(Math.random()*1000)},
+                            {name: '吉林',value: Math.round(Math.random()*1000)},
+                            {name: '福建',value: Math.round(Math.random()*1000)},
+                            {name: '贵州',value: Math.round(Math.random()*1000)},
+                            {name: '广东',value: Math.round(Math.random()*1000)},
+                            {name: '青海',value: Math.round(Math.random()*1000)},
+                            {name: '西藏',value: Math.round(Math.random()*1000)},
+                            {name: '四川',value: Math.round(Math.random()*1000)},
+                            {name: '宁夏',value: Math.round(Math.random()*1000)},
+                            {name: '海南',value: Math.round(Math.random()*1000)},
+                            {name: '台湾',value: Math.round(Math.random()*1000)},
+                            {name: '香港',value: Math.round(Math.random()*1000)},
+                            {name: '澳门',value: Math.round(Math.random()*1000)}
+                        ]
                     }
                 ]
             };
+
 
 
 

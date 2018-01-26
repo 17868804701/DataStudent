@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>沉迷上网</title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <style>
+        /*全局css*/
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: url("../img/body_bg.png");
+            background-size: 100% 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*头部*/
+        header {
+            height: 11%;
+            width: 97%;
+            margin-left: 1.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 0px solid white;
+        }
+        header img {
+            width: 50%;
+            position: absolute;
+            margin-top: 1%
+        }
+
+        /*主内容*/
+        .main_content {
+            /*display: flex;*/
+            /*justify-content: space-around;*/
+            width: 97%;
+            margin-left: 1.5%;
+            height: 87%;
+            /*border: 1px solid white;*/
+        }
+        .stu_info span {
+            color: #54DFE3;
+            font-size: 15px;
+            margin-left: 1%
+        }
+
+        h4 {
+            margin-top: 5px
+        }
+
+        .layui-select-title input{
+            background: none!important;
+            border: 1px solid #0b6379;
+            color: springgreen;
+        }
+        th{
+            text-align: center!important;
+            color: orange!important;
+        }
+        td{
+            text-align: center!important;
+            color: springgreen!important;
+            font-weight: bold;!important;
+        }
+        tr:hover{
+            background: none!important;
+        }
+        tr,td,th{
+            border: 1px solid #0b6379!important;
+        }
+        table{
+            background: none!important;
+        }
+        .set{
+            color: #1E9FFF!important;
+        }
+        .warning{
+            color: #FFB800!important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <form action="" class="layui-form">
+        <div class="layui-form-item" style="margin-left: -30px">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold">搜索条件:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: -10px;" >
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择分院</option>
+                        <option value="0">信息工程学院</option>
+                        <option value="1">会计学院</option>
+                        <option value="2">建筑学院</option>
+                        <option value="3">音乐学院</option>
+                        <option value="4">高职学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择社区</option>
+                        <option value="0">第一青年社区</option>
+                        <option value="1">第二青年社区</option>
+                        <option value="2">第三青年社区</option>
+                        <option value="3">第四青年社区</option>
+                        <option value="4">德鲁克社区</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <select name="interest" lay-filter="aihao">
+                        <option value="">请选择专业</option>
+                        <option value="0">软件工程</option>
+                        <option value="1">通信工程</option>
+                        <option value="2">土木工程</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
+                <div class="layui-input-block" style="margin-left: 0px">
+                    <a class="layui-btn" style="background: orange;border-radius: 30px">立即搜索</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</header>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div class="main_content">
+    <form action="" class="layui-form">
+        <table class="layui-table" lay-size="sm">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>学院</th>
+                <th>最近一周上网时长</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>盛慧</td>
+                <td>新闻与传播学院</td>
+                <td>133.67</td>
+                <td>
+                    <i class="layui-icon set" style="font-size:22px">&#xe620;</i>
+                    <i class="layui-icon warning" style="font-size:22px">&#xe645;</i>
+                    <i class="layui-icon del" style="font-size:22px">&#xe640;</i>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<script src="../layui/layui.js"></script>
+<script language="javascript">
+    //    //                        禁止浏览器缩放
+    //    var scrollFunc=function(e){
+    //        e=e || window.event;
+    //        if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+    //            event.returnValue=false;
+    //        }else if(e.detail){//Firefox
+    //            event.returnValue=false;
+    //        }
+    //    };
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome/Safari
+    //        动态设置高度
+    $(function () {
+        var height = $(window).height();
+        $("body").height(height);
+//        $("#content").height(height-70);
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+</html>
