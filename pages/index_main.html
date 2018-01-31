@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -227,7 +227,7 @@
     </div>
     <div class="header_item">
         <img src="../img/rmb.png" alt="11111111">
-        <span>￥1485元 <i>人均消费</i></span>
+        <span>￥1485元 <i>人均月消费</i></span>
     </div>
     <div class="header_item">
         <img src="../img/stu.png" alt="11111111">
@@ -290,7 +290,7 @@
                     }
                 },
                 legend: {
-                    data:['会计学院','信息学院','艺术学院','建筑学院','外语学院','高职学院','物流学院','金融学院','电子商务']
+                    data:['会计学院','信息工程学院','物流贸易学院','休闲管理学院','人文教育学院','艾德艺术设计学院','文化传媒学院','人文教育学院','人居环境学院','高职学院']
                 },
                 toolbox: {
                     show : true,
@@ -298,10 +298,10 @@
                     x: 'right',
                     y: 'center',
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                        restore : {show: true},
+                        magicType : {show: false, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
@@ -324,25 +324,25 @@
                         data:[320, 332, 301, 334, 390]
                     },
                     {
-                        name:'信息学院',
+                        name:'信息工程学院',
                         type:'bar',
                         stack: '广告',
                         data:[120, 132, 101, 134, 90]
                     },
                     {
-                        name:'艺术学院',
+                        name:'物流贸易学院',
                         type:'bar',
                         stack: '广告',
                         data:[220, 182, 191, 234, 290]
                     },
                     {
-                        name:'建筑学院',
+                        name:'休闲管理学院',
                         type:'bar',
                         stack: '广告',
                         data:[150, 232, 201, 154, 190]
                     },
                     {
-                        name:'外语学院',
+                        name:'人文教育学院',
                         type:'bar',
                         data:[862, 1018, 964, 1026, 1679],
                         markLine : {
@@ -359,29 +359,35 @@
                         }
                     },
                     {
-                        name:'高职学院',
+                        name:'艾德艺术设计学院',
                         type:'bar',
                         barWidth : 5,
                         stack: '班车',
                         data:[620, 732, 701, 734, 1090, 1130, 1120]
                     },
                     {
-                        name:'物流学院',
+                        name:'文化传媒学院',
                         type:'bar',
                         stack: '班车',
                         data:[120, 132, 101, 134, 290, 230, 220]
                     },
                     {
-                        name:'金融学院',
+                        name:'人文教育学院',
                         type:'bar',
                         stack: '班车',
                         data:[60, 72, 71, 74, 190, 130, 110]
                     },
                     {
-                        name:'电子商务',
+                        name:'人居环境学院',
                         type:'bar',
                         stack: '班车',
                         data:[62, 82, 91, 84, 109, 110, 120]
+                    },
+                    {
+                        name:'高职学院',
+                        type:'bar',
+                        stack: '班车',
+                        data:[162, 182, 91, 84, 19, 110, 120]
                     }
                 ]
             };
@@ -442,9 +448,9 @@
                     x: 'right',
                     y: 'center',
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
-                        restore : {show: true},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
@@ -546,15 +552,15 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['党员','预备党员','共青团员','群众','其他']
+                    data:['','','','','','','','','','']
                 },
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
                         magicType : {
-                            show: true,
+                            show: false,
                             type: ['pie', 'funnel'],
                             option: {
                                 funnel: {
@@ -565,7 +571,7 @@
                                 }
                             }
                         },
-                        restore : {show: true},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
@@ -577,11 +583,16 @@
                         radius : '55%',
                         center: ['50%', '60%'],
                         data:[
-                            {value:335, name:'党员'},
-                            {value:310, name:'预备党员'},
-                            {value:234, name:'共青团员'},
-                            {value:135, name:'群众'},
-                            {value:1548, name:'其他'}
+                            {value:335, name:'会计学院'},
+                            {value:310, name:'信息工程学院'},
+                            {value:234, name:'物流贸易学院'},
+                            {value:135, name:'休闲管理学院'},
+                            {value:1548, name:'人文教育学院'},
+                            {value:148, name:'艾德艺术设计学院'},
+                            {value:448, name:'文化传媒学院'},
+                            {value:148, name:'人文教育学院'},
+                            {value:548, name:'人居环境学院'},
+                            {value:348, name:'高职学院'}
                         ]
                     }
                 ]
@@ -626,10 +637,10 @@
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
                         magicType : {
-                            show: true,
+                            show: false,
                             type: ['pie', 'funnel'],
                             option: {
                                 funnel: {
@@ -640,7 +651,7 @@
                                 }
                             }
                         },
-                        restore : {show: true},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },

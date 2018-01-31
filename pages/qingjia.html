@@ -219,10 +219,10 @@
     <form action="" class="layui-form">
         <div class="layui-form-item" style="margin-left: 30px">
             <div class="layui-inline">
-                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold;width: 180px">搜索条件（荣誉称号）:</label>
-                <!--<div class="layui-input-inline">-->
-                <!--<input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名" class="layui-input">-->
-                <!--</div>-->
+                <label class="layui-form-label" style="color: orange;font-size: 17px;font-weight: bold;width: 180px">搜索条件（请假管理）:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" style="background: none;border: 1px solid #0b6379;color: springgreen" lay-verify="required|number" autocomplete="off" placeholder="请输入学号或姓名" class="layui-input">
+                </div>
             </div>
             <div class="layui-inline">
                 <!--<label class="layui-form-label" style="color: white">搜索条件</label>-->
@@ -358,512 +358,456 @@
         form.on('submit(demo1)', function (data) {
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
-            })
+            });
             return false;
         });
 
 
     });
 </script>
-<!--<script type="text/javascript">-->
-    <!--// 路径配置-->
-    <!--require.config({-->
-        <!--paths: {-->
-            <!--echarts: '../echarts-2.2.7/build/dist'-->
-        <!--}-->
-    <!--});-->
-    <!--// 使用-->
-    <!--require(-->
-        <!--[-->
-            <!--'echarts',-->
-            <!--'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载-->
-        <!--],-->
-        <!--function (ec) {-->
-            <!--// 基于准备好的dom，初始化echarts图表-->
-            <!--var myChart = ec.init(document.getElementById('content'));-->
-            <!--var option = {-->
-                <!--tooltip: {-->
-                    <!--show: true,-->
-                    <!--trigger: 'item'-->
-                <!--},-->
-                <!--legend: {-->
-                    <!--data: ['三好学生', '荣誉学生', '优秀个人', '优秀毕业生']-->
-                <!--},-->
-                <!--toolbox: {-->
-                    <!--show: true,-->
-                    <!--feature: {-->
-                        <!--mark: {show: true},-->
-                        <!--dataView: {show: true, readOnly: false},-->
-                        <!--magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},-->
-                        <!--restore: {show: true},-->
-                        <!--saveAsImage: {show: true}-->
-                    <!--}-->
-                <!--},-->
-                <!--calculable: true,-->
-                <!--xAxis: [-->
-                    <!--{-->
-                        <!--type: 'category',-->
-                        <!--data: ['信息学院', '高职学院', '物流学院', '艺术学院', '会计学院', '金融学院', '建筑学院']-->
-                    <!--}-->
-                <!--],-->
-                <!--yAxis: [-->
-                    <!--{-->
-                        <!--type: 'value'-->
-                    <!--}-->
-                <!--],-->
-                <!--series: [-->
-                    <!--{-->
-                        <!--name: '三好学生',-->
-                        <!--type: 'bar',-->
-                        <!--itemStyle: {        // 系列级个性化样式，纵向渐变填充-->
-                            <!--normal: {-->
-                                <!--barBorderColor: 'red',-->
-                                <!--barBorderWidth: 5,-->
-                                <!--color: (function () {-->
-                                    <!--var zrColor = require('zrender/tool/color');-->
-                                    <!--return zrColor.getLinearGradient(-->
-                                        <!--0, 400, 0, 300,-->
-                                        <!--[[0, 'green'], [1, 'yellow']]-->
-                                    <!--)-->
-                                <!--})()-->
-                            <!--},-->
-                            <!--emphasis: {-->
-                                <!--barBorderWidth: 5,-->
-                                <!--barBorderColor: 'green',-->
-                                <!--color: (function () {-->
-                                    <!--var zrColor = require('zrender/tool/color');-->
-                                    <!--return zrColor.getLinearGradient(-->
-                                        <!--0, 400, 0, 300,-->
-                                        <!--[[0, 'red'], [1, 'orange']]-->
-                                    <!--)-->
-                                <!--})(),-->
-                                <!--label: {-->
-                                    <!--show: true,-->
-                                    <!--position: 'top',-->
-                                    <!--formatter: "{a} {b} {c}",-->
-                                    <!--textStyle: {-->
-                                        <!--color: 'blue'-->
-                                    <!--}-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: [220, 232, 101, 234, 190, 330, 210]-->
-                    <!--},-->
-                    <!--{-->
-                        <!--name: '荣誉学生',-->
-                        <!--type: 'bar',-->
-                        <!--stack: '总量',-->
-                        <!--data: [120, '-', 451, 134, 190, 230, 110]-->
-                    <!--},-->
-                    <!--{-->
-                        <!--name: '优秀个人',-->
-                        <!--type: 'bar',-->
-                        <!--stack: '总量',-->
-                        <!--itemStyle: {                // 系列级个性化-->
-                            <!--normal: {-->
-                                <!--barBorderWidth: 6,-->
-                                <!--barBorderColor: 'tomato',-->
-                                <!--color: 'red'-->
-                            <!--},-->
-                            <!--emphasis: {-->
-                                <!--barBorderColor: 'red',-->
-                                <!--color: 'blue'-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: [-->
-                            <!--320, 332, 100, 334,-->
-                            <!--{-->
-                                <!--value: 390,-->
-                                <!--symbolSize: 10,   // 数据级个性化-->
-                                <!--itemStyle: {-->
-                                    <!--normal: {-->
-                                        <!--color: 'lime'-->
-                                    <!--},-->
-                                    <!--emphasis: {-->
-                                        <!--color: 'skyBlue'-->
-                                    <!--}-->
-                                <!--}-->
-                            <!--},-->
-                            <!--330, 320-->
-                        <!--]-->
-                    <!--},-->
-                    <!--{-->
-                        <!--name: '优秀毕业生',-->
-                        <!--type: 'bar',-->
-                        <!--barWidth: 40,                   // 系列级个性化，柱形宽度-->
-                        <!--itemStyle: {-->
-                            <!--normal: {                   // 系列级个性化，横向渐变填充-->
-                                <!--borderRadius: 5,-->
-                                <!--color: (function () {-->
-                                    <!--var zrColor = require('zrender/tool/color');-->
-                                    <!--return zrColor.getLinearGradient(-->
-                                        <!--0, 0, 1000, 0,-->
-                                        <!--[[0, 'rgba(30,144,255,0.8)'], [1, 'rgba(138,43,226,0.8)']]-->
-                                    <!--)-->
-                                <!--})(),-->
-                                <!--label: {-->
-                                    <!--show: true,-->
-                                    <!--textStyle: {-->
-                                        <!--fontSize: '20',-->
-                                        <!--fontFamily: '微软雅黑',-->
-                                        <!--fontWeight: 'bold'-->
-                                    <!--}-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: [-->
-                            <!--620, 732,-->
-                            <!--{-->
-                                <!--value: 701,-->
-                                <!--itemStyle: {normal: {label: {position: 'inside'}}}-->
-                            <!--},-->
-                            <!--734, 890, 930, 820-->
-                        <!--],-->
-                        <!--markLine: {-->
-                            <!--data: [-->
-                                <!--{type: 'average', name: '平均值'},-->
-                                <!--{type: 'max'},-->
-                                <!--{type: 'min'}-->
-                            <!--]-->
-                        <!--}-->
-                    <!--}-->
-                <!--]-->
-            <!--};-->
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content'));
+            var option = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data:['事假', '病假','产假','其他','未销假']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'category',
+                        data : ['第一周','第二周','第三周','第四周','第五周','第六周','第七周']
+                    }
+                ],
+                series : [
+                    {
+                        name:'事假',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[320, 302, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'病假',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'产假',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'其他',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[150, 212, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'未销假',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[820, 832, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
 
 
-            <!--var ecConfig = require('echarts/config');-->
-            <!--myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {-->
-                <!--var selected = param.selected;-->
-                <!--var serie;-->
-                <!--var str = '当前选择： ';-->
-                <!--for (var idx in selected) {-->
-                    <!--serie = option.series[idx];-->
-                    <!--for (var i = 0, l = serie.data.length; i < l; i++) {-->
-                        <!--if (selected[idx][i]) {-->
-                            <!--str += '【系列' + idx + '】' + serie.name + ' : ' +-->
-                                <!--'【数据' + i + '】' + serie.data[i].name + ' ';-->
-                        <!--}-->
-                    <!--}-->
-                <!--}-->
-                <!--document.getElementById('wrong-message').innerHTML = str;-->
-            <!--})-->
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
 
 
-            <!--// 为echarts对象加载数据-->
-            <!--myChart.setOption(option);-->
-        <!--}-->
-    <!--);-->
-<!--</script>-->
-<!--<script type="text/javascript">-->
-    <!--// 路径配置-->
-    <!--require.config({-->
-        <!--paths: {-->
-            <!--echarts: '../echarts-2.2.7/build/dist'-->
-        <!--}-->
-    <!--});-->
-    <!--// 使用-->
-    <!--require(-->
-        <!--[-->
-            <!--'echarts',-->
-            <!--'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载-->
-        <!--],-->
-        <!--function (ec) {-->
-            <!--// 基于准备好的dom，初始化echarts图表-->
-            <!--var myChart = ec.init(document.getElementById('content1'));-->
-            <!--var option = {-->
-                <!--title: {-->
-                    <!--text: '勤工助学岗位分布',-->
-                    <!--subtext: '',-->
-                    <!--x: 'center'-->
-                <!--},-->
-                <!--tooltip: {-->
-                    <!--trigger: 'item',-->
-                    <!--formatter: "{a} <br/>{b} : {c} ({d}%)"-->
-                <!--},-->
-                <!--legend: {-->
-                    <!--orient: 'vertical',-->
-                    <!--x: 'left',-->
-                    <!--data: ['三好学生', '优秀个人', '优秀毕业生', '荣誉学生']-->
-                <!--},-->
-                <!--toolbox: {-->
-                    <!--show: true,-->
-                    <!--feature: {-->
-                        <!--mark: {show: true},-->
-                        <!--dataView: {show: true, readOnly: false},-->
-                        <!--magicType: {-->
-                            <!--show: true,-->
-                            <!--type: ['pie', 'funnel'],-->
-                            <!--option: {-->
-                                <!--funnel: {-->
-                                    <!--x: '25%',-->
-                                    <!--width: '50%',-->
-                                    <!--funnelAlign: 'left',-->
-                                    <!--max: 1548-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--restore: {show: true},-->
-                        <!--saveAsImage: {show: true}-->
-                    <!--}-->
-                <!--},-->
-                <!--calculable: true,-->
-                <!--series: [-->
-                    <!--{-->
-                        <!--name: '所占比例',-->
-                        <!--type: 'pie',-->
-                        <!--radius: '55%',-->
-                        <!--center: ['50%', '60%'],-->
-                        <!--data: [-->
-                            <!--{value: 335, name: '三好学生'},-->
-                            <!--{value: 310, name: '优秀个人'},-->
-                            <!--{value: 234, name: '优秀毕业生'},-->
-                            <!--{value: 135, name: '荣誉学生'},-->
-                        <!--]-->
-                    <!--}-->
-                <!--]-->
-            <!--};-->
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content1'));
+            var option = {
+                title: {
+                    text: '勤工助学岗位分布',
+                    subtext: '',
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: ['病假', '事假', '产假', '其它假',"未销假"]
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                series: [
+                    {
+                        name: '所占比例',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['50%', '60%'],
+                        data: [
+                            {value: 335, name: '病假'},
+                            {value: 310, name: '事假'},
+                            {value: 234, name: '产假'},
+                            {value: 135, name: '其它假'},
+                            {value: 15, name: '未销假'},
+                        ]
+                    }
+                ]
+            };
 
 
-            <!--var ecConfig = require('echarts/config');-->
-            <!--myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {-->
-                <!--var selected = param.selected;-->
-                <!--var serie;-->
-                <!--var str = '当前选择： ';-->
-                <!--for (var idx in selected) {-->
-                    <!--serie = option.series[idx];-->
-                    <!--for (var i = 0, l = serie.data.length; i < l; i++) {-->
-                        <!--if (selected[idx][i]) {-->
-                            <!--str += '【系列' + idx + '】' + serie.name + ' : ' +-->
-                                <!--'【数据' + i + '】' + serie.data[i].name + ' ';-->
-                        <!--}-->
-                    <!--}-->
-                <!--}-->
-                <!--document.getElementById('wrong-message').innerHTML = str;-->
-            <!--})-->
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
 
 
-            <!--// 为echarts对象加载数据-->
-            <!--myChart.setOption(option);-->
-        <!--}-->
-    <!--);-->
-<!--</script>-->
-<!--<script type="text/javascript">-->
-    <!--// 路径配置-->
-    <!--require.config({-->
-        <!--paths: {-->
-            <!--echarts: '../echarts-2.2.7/build/dist'-->
-        <!--}-->
-    <!--});-->
-    <!--// 使用-->
-    <!--require(-->
-        <!--[-->
-            <!--'echarts',-->
-            <!--'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/pie',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/radar',// 使用柱状图就加载bar模块，按需加载-->
-        <!--],-->
-        <!--function (ec) {-->
-            <!--// 基于准备好的dom，初始化echarts图表-->
-            <!--var myChart = ec.init(document.getElementById('content_bottom'));-->
-            <!--var option = {-->
-                <!--title: {-->
-                    <!--text: '学生自主动手能力',-->
-                    <!--subtext: '数据来源于学校教务系统'-->
-                <!--},-->
-                <!--tooltip: {-->
-                    <!--trigger: 'axis'-->
-                <!--},-->
-                <!--legend: {-->
-                    <!--x: 'center',-->
-                    <!--data: ['学生个人能力', '学校平均能力']-->
-                <!--},-->
-                <!--toolbox: {-->
-                    <!--show: true,-->
-                    <!--feature: {-->
-                        <!--mark: {show: true},-->
-                        <!--dataView: {show: true, readOnly: false},-->
-                        <!--restore: {show: true},-->
-                        <!--saveAsImage: {show: true}-->
-                    <!--}-->
-                <!--},-->
-                <!--calculable: true,-->
-                <!--polar: [-->
-                    <!--{-->
-                        <!--indicator: [-->
-                            <!--{text: '文体特长', max: 100},-->
-                            <!--{text: '信用记录', max: 100},-->
-                            <!--{text: '组织能力', max: 100},-->
-                            <!--{text: '创新实践', max: 100},-->
-                            <!--{text: '学习能力', max: 100},-->
-                            <!--{text: '沟通能力', max: 100}-->
-                        <!--],-->
-                        <!--radius: 130-->
-                    <!--}-->
-                <!--],-->
-                <!--series: [-->
-                    <!--{-->
-                        <!--name: '完全实况球员数据',-->
-                        <!--type: 'radar',-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--areaStyle: {-->
-                                    <!--type: 'default'-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: [-->
-                            <!--{-->
-                                <!--value: [97, 42, 88, 94, 90, 86],-->
-                                <!--name: '学生个人能力'-->
-                            <!--},-->
-                            <!--{-->
-                                <!--value: [97, 32, 74, 95, 88, 92],-->
-                                <!--name: '学校平均能力'-->
-                            <!--}-->
-                        <!--]-->
-                    <!--}-->
-                <!--]-->
-            <!--};-->
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/radar',// 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content_bottom'));
+            var option = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data:['事假','病假','产假','其他假','未销假次数']
+                },
+                toolbox: {
+                    show : true,
+                    orient: 'vertical',
+                    x: 'right',
+                    y: 'center',
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00','22:00点以后']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'事假',
+                        type:'bar',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'病假',
+                        type:'bar',
+                        stack: '广告',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'产假',
+                        type:'bar',
+                        stack: '广告',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'其他假',
+                        type:'bar',
+                        stack: '广告',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'未销假次数',
+                        type:'bar',
+                        data:[862, 1018, 964, 1026, 1679, 1600, 1570],
+                        markLine : {
+                            itemStyle:{
+                                normal:{
+                                    lineStyle:{
+                                        type: 'dashed'
+                                    }
+                                }
+                            },
+                            data : [
+                                [{type : 'min'}, {type : 'max'}]
+                            ]
+                        }
+                    }
+                ]
+            };
 
 
-            <!--var ecConfig = require('echarts/config');-->
-            <!--myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {-->
-                <!--var selected = param.selected;-->
-                <!--var serie;-->
-                <!--var str = '当前选择： ';-->
-                <!--for (var idx in selected) {-->
-                    <!--serie = option.series[idx];-->
-                    <!--for (var i = 0, l = serie.data.length; i < l; i++) {-->
-                        <!--if (selected[idx][i]) {-->
-                            <!--str += '【系列' + idx + '】' + serie.name + ' : ' +-->
-                                <!--'【数据' + i + '】' + serie.data[i].name + ' ';-->
-                        <!--}-->
-                    <!--}-->
-                <!--}-->
-                <!--document.getElementById('wrong-message').innerHTML = str;-->
-            <!--})-->
+
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
 
 
-            <!--// 为echarts对象加载数据-->
-            <!--myChart.setOption(option);-->
-        <!--}-->
-    <!--);-->
-<!--</script>-->
-<!--<script type="text/javascript">-->
-    <!--// 路径配置-->
-    <!--require.config({-->
-        <!--paths: {-->
-            <!--echarts: '../echarts-2.2.7/build/dist'-->
-        <!--}-->
-    <!--});-->
-    <!--// 使用-->
-    <!--require(-->
-        <!--[-->
-            <!--'echarts',-->
-            <!--'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/pie',// 使用柱状图就加载bar模块，按需加载-->
-            <!--'echarts/chart/radar',// 使用柱状图就加载bar模块，按需加载-->
-        <!--],-->
-        <!--function (ec) {-->
-            <!--// 基于准备好的dom，初始化echarts图表-->
-            <!--var myChart = ec.init(document.getElementById('content2'));-->
-            <!--var option = {-->
-                <!--tooltip: {-->
-                    <!--trigger: 'item',-->
-                    <!--formatter: "{a} <br/>{b} : {c} ({d}%)"-->
-                <!--},-->
-                <!--legend: {-->
-                    <!--orient: 'vertical',-->
-                    <!--x: 'left',-->
-                    <!--data: ['优秀个人', '三好学生', '荣誉学生', '视频广告', '优秀毕业生']-->
-                <!--},-->
-                <!--toolbox: {-->
-                    <!--show: true,-->
-                    <!--feature: {-->
-                        <!--mark: {show: true},-->
-                        <!--dataView: {show: true, readOnly: false},-->
-                        <!--magicType: {-->
-                            <!--show: true,-->
-                            <!--type: ['pie', 'funnel'],-->
-                            <!--option: {-->
-                                <!--funnel: {-->
-                                    <!--x: '25%',-->
-                                    <!--width: '50%',-->
-                                    <!--funnelAlign: 'center',-->
-                                    <!--max: 1548-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--restore: {show: true},-->
-                        <!--saveAsImage: {show: true}-->
-                    <!--}-->
-                <!--},-->
-                <!--calculable: true,-->
-                <!--series: [-->
-                    <!--{-->
-                        <!--name: '访问来源',-->
-                        <!--type: 'pie',-->
-                        <!--radius: ['50%', '70%'],-->
-                        <!--itemStyle: {-->
-                            <!--normal: {-->
-                                <!--label: {-->
-                                    <!--show: false-->
-                                <!--},-->
-                                <!--labelLine: {-->
-                                    <!--show: false-->
-                                <!--}-->
-                            <!--},-->
-                            <!--emphasis: {-->
-                                <!--label: {-->
-                                    <!--show: true,-->
-                                    <!--position: 'center',-->
-                                    <!--textStyle: {-->
-                                        <!--fontSize: '30',-->
-                                        <!--fontWeight: 'bold'-->
-                                    <!--}-->
-                                <!--}-->
-                            <!--}-->
-                        <!--},-->
-                        <!--data: [-->
-                            <!--{value: 335, name: '优秀个人'},-->
-                            <!--{value: 310, name: '三好学生'},-->
-                            <!--{value: 234, name: '荣誉学生'},-->
-                            <!--{value: 135, name: '视频广告'},-->
-                            <!--{value: 1548, name: '优秀毕业生'}-->
-                        <!--]-->
-                    <!--}-->
-                <!--]-->
-            <!--};-->
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../echarts-2.2.7/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/bar',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie',// 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/radar',// 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('content2'));
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: ['事假', '病假', '其它假', '其他', '产假']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'center',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                series: [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: ['50%', '70%'],
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: false
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true,
+                                    position: 'center',
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        data: [
+                            {value: 335, name: '事假'},
+                            {value: 310, name: '病假'},
+                            {value: 234, name: '其它假'},
+                            {value: 135, name: '其他'},
+                            {value: 1548, name: '产假'}
+                        ]
+                    }
+                ]
+            };
 
 
-            <!--var ecConfig = require('echarts/config');-->
-            <!--myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {-->
-                <!--var selected = param.selected;-->
-                <!--var serie;-->
-                <!--var str = '当前选择： ';-->
-                <!--for (var idx in selected) {-->
-                    <!--serie = option.series[idx];-->
-                    <!--for (var i = 0, l = serie.data.length; i < l; i++) {-->
-                        <!--if (selected[idx][i]) {-->
-                            <!--str += '【系列' + idx + '】' + serie.name + ' : ' +-->
-                                <!--'【数据' + i + '】' + serie.data[i].name + ' ';-->
-                        <!--}-->
-                    <!--}-->
-                <!--}-->
-                <!--document.getElementById('wrong-message').innerHTML = str;-->
-            <!--})-->
+            var ecConfig = require('echarts/config');
+            myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = option.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                        }
+                    }
+                }
+                document.getElementById('wrong-message').innerHTML = str;
+            })
 
 
-            <!--// 为echarts对象加载数据-->
-            <!--myChart.setOption(option);-->
-        <!--}-->
-    <!--);-->
-<!--</script>-->
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+        }
+    );
+</script>
 </body>
 </html>
