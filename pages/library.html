@@ -230,15 +230,15 @@
 <div class="header">
     <div class="header_item">
         <img src="../img/stu.png" alt="11111111">
-        <span>34875人 <i>学校总人数</i></span>
+        <span>348万册 <i>馆藏图书</i></span>
     </div>
     <div class="header_item">
         <img src="../img/rmb.png" alt="11111111">
-        <span>￥1485元 <i>人均消费</i></span>
+        <span>1485册 <i>新引入图书（本学期）</i></span>
     </div>
     <div class="header_item">
         <img src="../img/stu.png" alt="11111111">
-        <span>24885次 <i>刷卡次数</i></span>
+        <span>2481册 <i>在借图书</i></span>
     </div>
 </div>
 <div class="main_content">
@@ -284,7 +284,7 @@
 
             var option = {
                 title : {
-                    text: '学生就餐习惯分析',
+                    text: '图书借阅量分析',
                     subtext: '',
                     textStyle: {
                         color: '#fff',
@@ -294,42 +294,53 @@
                 tooltip : {
                     trigger: 'axis'
                 },
-                legend: {
-                    data:['第一餐厅','第二餐厅'],
-                    textStyle: {
-                        color: '#fff',
-                        fontSize:'14'
-                    }
-                },
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
+                        magicType: {show: false, type: ['line', 'bar']},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
                 calculable : true,
+                legend: {
+                    data:['馆藏数','借阅量'],
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
+                },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-                        axisLabel : {
-                            formatter: '{value} 人',
+                        data : ['安卓教程','PHP教程','HTML教程','C语言教程','java教程','Python教程','C#教程','javascript教程','Jquery教程','SSM教程','SSH教程','项目实战'],
+                        axisLabel: {
+                            show: true,
                             textStyle: {
                                 color: '#fff',
                                 fontSize:'14'
                             }
-                        }
+                        },
                     }
                 ],
                 yAxis : [
                     {
                         type : 'value',
+                        name : '馆藏数',
                         axisLabel : {
-                            formatter: '{value} 人',
+                            formatter: '{value} 万',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        },
+                    },
+                    {
+                        type : 'value',
+                        name : '借阅量',
+                        axisLabel : {
+                            formatter: '{value} 千',
                             textStyle: {
                                 color: '#fff',
                                 fontSize:'14'
@@ -339,40 +350,18 @@
                 ],
                 series : [
                     {
-                        name:'第一餐厅',
+                        name:'馆藏数',
                         type:'bar',
-                        data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
-                        },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
                     },
                     {
-                        name:'第二餐厅',
-                        type:'bar',
-                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-                        markPoint : {
-                            data : [
-                                {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
-                                {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
-                            ]
-                        },
-                        markLine : {
-                            data : [
-                                {type : 'average', name : '平均值'}
-                            ]
-                        }
+                        name:'借阅量',
+                        type:'line',
+                        yAxisIndex: 1,
+                        data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
                     }
                 ]
             };
-
 
 
 
@@ -401,9 +390,14 @@
             var myChart = ec.init(document.getElementById('content1'));
             var option = {
                 title : {
-                    text: '',
+                    text: '馆藏图书分析',
                     subtext: '',
-                    x:'center'
+                    x:'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'item',
@@ -412,7 +406,7 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['购物','医疗','水费充值','打印','其他'],
+                    data:['软件类','营销类','科技类','小说类','其他'],
                     textStyle: {
                         color: '#fff',
                     }
@@ -420,10 +414,10 @@
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
                         magicType : {
-                            show: true,
+                            show: false,
                             type: ['pie', 'funnel'],
                             option: {
                                 funnel: {
@@ -434,7 +428,7 @@
                                 }
                             }
                         },
-                        restore : {show: true},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
@@ -446,10 +440,10 @@
                         radius : '55%',
                         center: ['50%', '60%'],
                         data:[
-                            {value:335, name:'购物'},
-                            {value:310, name:'医疗'},
-                            {value:234, name:'水费充值'},
-                            {value:135, name:'打印'},
+                            {value:335, name:'软件类'},
+                            {value:310, name:'营销类'},
+                            {value:234, name:'科技类'},
+                            {value:135, name:'小说类'},
                             {value:1548, name:'其他'}
                         ]
                     }
@@ -481,65 +475,77 @@
             var myChart = ec.init(document.getElementById('content2'));
             var option = {
                 title : {
-                    text: '',
-                    subtext: '',
-                    x:'center'
-                },
-                tooltip : {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
-                },
-                legend: {
-                    orient : 'vertical',
-                    x : 'left',
-                    data:['第一餐厅','第二餐厅','商业街','便利店','快餐店'],
+                    text: '图书借阅排名Top6',
+                    subtext: '数据来自网络',
                     textStyle: {
                         color: '#fff',
+                        fontSize:'14'
+                    }
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:[ '2018年'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
                     }
                 },
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
-                        magicType : {
-                            show: true,
-                            type: ['pie', 'funnel'],
-                            option: {
-                                funnel: {
-                                    x: '25%',
-                                    width: '50%',
-                                    funnelAlign: 'left',
-                                    max: 1548
-                                }
-                            }
-                        },
-                        restore : {show: true},
+                        magicType: {show: false, type: ['line', 'bar']},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
                 calculable : true,
+                xAxis : [
+                    {
+                        type : 'value',
+                        boundaryGap : [0, 0.01],
+                        axisLabel : {
+                            formatter: '{value} 千人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'category',
+                        data : ['信息学院','会计学院','艺术学院','建筑学院','人文学院','物流学院'],
+                        axisLabel : {
+                            formatter: '{value}',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
+                    }
+                ],
                 series : [
                     {
-                        name:'所占比例',
-                        type:'pie',
-                        radius : '55%',
-                        center: ['50%', '60%'],
-                        data:[
-                            {value:335, name:'第一餐厅'},
-                            {value:310, name:'第二餐厅'},
-                            {value:234, name:'商业街'},
-                            {value:135, name:'便利店'},
-                            {value:1548, name:'快餐店'}
-                        ]
+                        name:'2018年',
+                        type:'bar',
+                        data:[19325, 23438, 31000, 121594, 134141, 681807]
                     }
                 ]
             };
+
             // 为echarts对象加载数据
             myChart.setOption(option);
         }
     );
 </script>
+
+
+
 <!--content-->
 <script type="text/javascript">
     // 路径配置
@@ -560,6 +566,14 @@
             var myChart = ec.init(document.getElementById('content'));
 
             var option = {
+                title : {
+                    text: '最近10年购买图书投入',
+                    subtext: '',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+                },
                 tooltip : {
                     trigger: 'axis',
                     axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -567,7 +581,7 @@
                     }
                 },
                 legend: {
-                    data:['食堂','水费充值','超市','电费充值','班车','医务室','洗衣机','其他','人均消费'],
+                    data:['社科总论','科技类','语言,文学','地理','IT行业','金融类','艺术类','综合性图书','其他'],
                     textStyle: {
                         color: '#fff',
                     }
@@ -578,10 +592,10 @@
                     x: 'right',
                     y: 'center',
                     feature : {
-                        mark : {show: true},
+                        mark : {show: false},
                         dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                        restore : {show: true},
+                        magicType : {show: false, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: false},
                         saveAsImage : {show: true}
                     }
                 },
@@ -589,7 +603,7 @@
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['周一','周二','周三','周四','周五','周六','周日'],
+                        data : ['2012','2013','2014','2015','2016','2017','2018'],
                         axisLabel: {
                             show: true,
                             textStyle: {
@@ -613,30 +627,30 @@
                 ],
                 series : [
                     {
-                        name:'食堂',
+                        name:'社科总论',
                         type:'bar',
                         data:[320, 332, 301, 334, 390, 330, 320]
                     },
                     {
-                        name:'水费充值',
+                        name:'科技类',
                         type:'bar',
                         stack: '广告',
                         data:[120, 132, 101, 134, 90, 230, 210]
                     },
                     {
-                        name:'超市',
+                        name:'语言,文学',
                         type:'bar',
                         stack: '广告',
                         data:[220, 182, 191, 234, 290, 330, 310]
                     },
                     {
-                        name:'电费充值',
+                        name:'地理',
                         type:'bar',
                         stack: '广告',
                         data:[150, 232, 201, 154, 190, 330, 410]
                     },
                     {
-                        name:'班车',
+                        name:'IT行业',
                         type:'bar',
                         data:[862, 1018, 964, 1026, 1679, 1600, 1570],
                         markLine : {
@@ -653,29 +667,29 @@
                         }
                     },
                     {
-                        name:'医务室',
+                        name:'金融类',
                         type:'bar',
                         barWidth : 5,
-                        stack: '班车',
+                        stack: 'IT行业',
                         data:[620, 732, 701, 734, 1090, 1130, 1120]
                     },
                     {
-                        name:'洗衣机',
+                        name:'艺术类',
                         type:'bar',
-                        stack: '班车',
+                        stack: 'IT行业',
                         data:[120, 132, 101, 134, 290, 230, 220]
                     },
+
                     {
+                        name:'综合性图书',
+                        type:'bar',
+                        stack: 'IT行业',
+                        data:[62, 82, 91, 84, 109, 110, 120]
+                    },     {
                         name:'其他',
                         type:'bar',
-                        stack: '班车',
+                        stack: 'IT行业',
                         data:[60, 72, 71, 74, 190, 130, 110]
-                    },
-                    {
-                        name:'人均消费',
-                        type:'bar',
-                        stack: '班车',
-                        data:[62, 82, 91, 84, 109, 110, 120]
                     }
                 ]
             };

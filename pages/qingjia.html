@@ -391,7 +391,11 @@
                     }
                 },
                 legend: {
-                    data:['事假', '病假','产假','其他','未销假']
+                    data:['事假', '病假','产假','其他','未销假'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 toolbox: {
                     show : true,
@@ -406,13 +410,27 @@
                 calculable : true,
                 xAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
                         type : 'category',
-                        data : ['第一周','第二周','第三周','第四周','第五周','第六周','第七周']
+                        data : ['第一周','第二周','第三周','第四周','第五周','第六周','第七周'],
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
@@ -501,7 +519,12 @@
                 title: {
                     text: '勤工助学岗位分布',
                     subtext: '',
-                    x: 'center'
+                    x: 'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip: {
                     trigger: 'item',
@@ -510,7 +533,12 @@
                 legend: {
                     orient: 'vertical',
                     x: 'left',
-                    data: ['病假', '事假', '产假', '其它假',"未销假"]
+                    data: ['病假', '事假', '产假', '其它假',"未销假"],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show: true,
@@ -602,7 +630,12 @@
                     }
                 },
                 legend: {
-                    data:['事假','病假','产假','其他假','未销假次数']
+                    data:['事假','病假','产假','其他假','未销假次数'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,
@@ -621,12 +654,26 @@
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00','22:00点以后']
+                        data : ['6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00','22:00点以后'],
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
@@ -725,7 +772,11 @@
                 legend: {
                     orient: 'vertical',
                     x: 'left',
-                    data: ['事假', '病假', '其它假', '其他', '产假']
+                    data: ['事假', '病假', '其它假', '其他', '产假'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 toolbox: {
                     show: true,

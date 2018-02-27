@@ -247,7 +247,12 @@
             var option = {
                 title :{
                     text : '最近一周消费情况（单位：元）',
-                    subtext : ''
+                    subtext : '',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -271,19 +276,36 @@
                 },
                 legend: {
                     data:['本周', '上周'],
-                    selectedMode:false
+                    selectedMode:false,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['周一','周二','周三','周四','周五','周六','周日']
+                        data : ['周一','周二','周三','周四','周五','周六','周日'],
+                        axisLabel : {
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
                         type : 'value',
                         min : 200,
-                        max : 450
+                        max : 450,
+                        axisLabel : {
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [

@@ -365,7 +365,11 @@
                     }
                 },
                 legend: {
-                    data:['信息学院', '外语学院','物流学院','会计学院','高职学院']
+                    data:['信息学院', '外语学院','物流学院','会计学院','高职学院'],
+                    textStyle: {
+                        //设置颜色
+                        color:'#fff'
+                    }
                 },
                 toolbox: {
                     show : true,
@@ -386,7 +390,14 @@
                 yAxis : [
                     {
                         type : 'category',
-                        data : ['国家奖学金','国家励志奖学金','杜斌丞奖学金','贫困助学金','校内奖学金','其他奖学金奖学金']
+                        data : ['国家奖学金','国家励志奖学金','杜斌丞奖学金','贫困助学金','校内奖学金','其他奖学金奖学金'],
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
@@ -479,7 +490,12 @@
                 title : {
                     text: '勤工助学岗位分布',
                     subtext: '',
-                    x:'center'
+                    x:'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'item',
@@ -488,7 +504,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['国家奖学金','国家励志奖学金','杜斌丞奖学金','校内奖学金','其他奖学金']
+                    data:['国家奖学金','国家励志奖学金','杜斌丞奖学金','校内奖学金','其他奖学金'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,
@@ -587,7 +608,12 @@
                 },
                 legend: {
                     x : 'center',
-                    data:['学生个人能力','学校平均能力']
+                    data:['学生个人能力','学校平均能力'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,
@@ -694,7 +720,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['信息学院','外语学院','物流学院','会计学院','高职学院']
+                    data:['信息学院','外语学院','物流学院','会计学院','高职学院'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,

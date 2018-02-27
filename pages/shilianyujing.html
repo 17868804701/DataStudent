@@ -364,7 +364,12 @@
                 title : {
                     text: '门禁次数',
                     subtext: '',
-                    x:'center'
+                    x:'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'item',
@@ -373,7 +378,13 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['东大门','西大门','南大门','宿舍门','教学区']
+                    data:['东大门','西大门','南大门','宿舍门','教学区'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
+
                 },
                 toolbox: {
                     show : true,
@@ -475,12 +486,23 @@
                 },
                 calculable : true,
                 legend: {
-                    data:['门禁次数','消费次数','缺勤次数']
+                    data:['门禁次数','消费次数','缺勤次数'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+                        axisLabel : {
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
@@ -488,14 +510,22 @@
                         type : 'value',
                         name : '门禁/消费/次数',
                         axisLabel : {
-                            formatter: '{value} 次'
+                            formatter: '{value} 次',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     },
                     {
                         type : 'value',
                         name : '缺勤次数',
                         axisLabel : {
-                            formatter: '{value} 次'
+                            formatter: '{value} 次',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     }
                 ],
@@ -569,7 +599,11 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 toolbox: {
                     show : true,
@@ -586,12 +620,26 @@
                     {
                         type : 'category',
                         boundaryGap : false,
-                        data : ['周一','周二','周三','周四','周五','周六','周日']
+                        data : ['周一','周二','周三','周四','周五','周六','周日'],
+                        axisLabel : {
+                            formatter: '{value} 次',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        axisLabel : {
+                            formatter: '{value} 次',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
@@ -681,7 +729,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                    data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,

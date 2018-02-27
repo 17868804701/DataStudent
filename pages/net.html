@@ -284,12 +284,23 @@
                 },
                 calculable : true,
                 legend: {
-                    data:['在线人数','在线人数1']
+                    data:['在线人数','在线人数1'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['0:00-2:00','2:00-4:00','4:00-6:00','6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00','22:00-24:00']
+                        data : ['0:00-2:00','2:00-4:00','4:00-6:00','6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00','22:00-24:00'],
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
@@ -297,14 +308,22 @@
                         type : 'value',
                         name : '人数',
                         axisLabel : {
-                            formatter: '{value} 人'
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     },
                     {
                         type : 'value',
                         name : '人数',
                         axisLabel : {
-                            formatter: '{value} 千人'
+                            formatter: '{value} 千人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     }
                 ],
@@ -362,12 +381,23 @@
                 },
                 calculable : true,
                 legend: {
-                    data:['上网时长','人数']
+                    data:['上网时长','人数'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['信息工程学院','英语学院','建筑学院','艺术学院','物流学院','爱的艺术学院','会计学院','金融工学院','金融工学院','金融工学院','金融工学院','金融工学院']
+                        data : ['信息工程学院','英语学院','建筑学院','艺术学院','物流学院','爱的艺术学院','会计学院','金融工学院','金融工学院','金融工学院','金融工学院','金融工学院'],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        },
                     }
                 ],
                 yAxis : [
@@ -375,14 +405,22 @@
                         type : 'value',
                         name : '小时',
                         axisLabel : {
-                            formatter: '{value} h'
+                            formatter: '{value} h',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     },
                     {
                         type : 'value',
                         name : '人数',
                         axisLabel : {
-                            formatter: '{value} 人'
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
                         }
                     }
                 ],
@@ -435,7 +473,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+                    data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,

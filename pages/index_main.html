@@ -290,7 +290,10 @@
                     }
                 },
                 legend: {
-                    data:['会计学院','信息工程学院','物流贸易学院','休闲管理学院','人文教育学院','艾德艺术设计学院','文化传媒学院','人文教育学院','人居环境学院','高职学院']
+                    data:['会计学院','信息工程学院','物流贸易学院','休闲管理学院','人文教育学院','艾德艺术设计学院','文化传媒学院','人文教育学院','人居环境学院','高职学院'],
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
                 },
                 toolbox: {
                     show : true,
@@ -305,16 +308,31 @@
                         saveAsImage : {show: true}
                     }
                 },
+                backgroundColor: '#060a14',
                 calculable : true,
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['党员','预备党员','共青团员','群众','其他']
+                        data : ['党员','预备党员','共青团员','群众','其他'],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        },
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        },
                     }
                 ],
                 series : [
@@ -424,7 +442,10 @@
                 title : {
                     text: '生源地学生数量分布',
                     subtext: '',
-                    x:'center'
+                    x:'center',
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
                 },
                 tooltip : {
                     trigger: 'item'
@@ -432,7 +453,10 @@
                 legend: {
                     orient: 'vertical',
                     x:'left',
-                    data:['学生数量']
+                    data:['学生数量'],
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
                 },
                 dataRange: {
                     min: 0,
@@ -440,7 +464,10 @@
                     x: 'left',
                     y: 'bottom',
                     text:['高','低'],           // 文本，默认为数值文本
-                    calculable : true
+                    calculable : true,
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
                 },
                 toolbox: {
                     show: true,
@@ -632,7 +659,10 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['男','女']
+                    data:['男','女'],
+                    textStyle: {
+                        color: '#fff'          //legend字体颜色
+                    }
                 },
                 toolbox: {
                     show : true,

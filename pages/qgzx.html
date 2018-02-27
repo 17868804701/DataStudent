@@ -368,7 +368,11 @@
                     }
                 },
                 legend: {
-                    data:['信息学院','外语学院','建筑学院','物流学院','会计学院','金融学院','管理学院','高职学院','艺术学院']
+                    data:['信息学院','外语学院','建筑学院','物流学院','会计学院','金融学院','管理学院','高职学院','艺术学院'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 toolbox: {
                     show : true,
@@ -387,12 +391,26 @@
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['图书馆兼职','教师助理','餐厅兼职','商业街兼职','高培中心兼职','超市兼职','其他']
+                        data : ['图书馆兼职','教师助理','餐厅兼职','商业街兼职','高培中心兼职','超市兼职','其他'],
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
@@ -514,7 +532,12 @@
                 title : {
                     text: '勤工助学岗位分布',
                     subtext: '',
-                    x:'center'
+                    x:'center',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'item',
@@ -523,7 +546,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['图书馆兼职','超市兼职','教师助理','餐厅兼职','其他']
+                    data:['图书馆兼职','超市兼职','教师助理','餐厅兼职','其他'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,
@@ -615,14 +643,24 @@
             var option = {
                 title : {
                     text: '学生自主动手能力',
-                    subtext: '数据来源于学校教务系统'
+                    subtext: '数据来源于学校教务系统',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 tooltip : {
                     trigger: 'axis'
                 },
                 legend: {
                     x : 'center',
-                    data:['学生个人能力','学校平均能力']
+                    data:['学生个人能力','学校平均能力'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,
@@ -644,7 +682,7 @@
                             {text : '学习能力', max  : 100},
                             {text : '沟通能力', max  : 100}
                         ],
-                        radius : 130
+                        radius : 130,
                     }
                 ],
                 series : [
@@ -729,7 +767,12 @@
                 legend: {
                     orient : 'vertical',
                     x : 'left',
-                    data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                    data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
+
                 },
                 toolbox: {
                     show : true,

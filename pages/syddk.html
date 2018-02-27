@@ -363,7 +363,11 @@
             var option = {
                 title :{
                     text : '生源地贷款(人数分布)',
-                    subtext : ''
+                    subtext : '',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -387,19 +391,36 @@
                 },
                 legend: {
                     data:['数据（人）'],
-                    selectedMode:false
+                    selectedMode:false,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize:'14'
+                    }
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['信息学院','外语学院','建筑学院','物流学院','会计学院','金融学院','管理学院','高职学院','艺术学院']
+                        data : ['信息学院','外语学院','建筑学院','物流学院','会计学院','金融学院','管理学院','高职学院','艺术学院'],
+                        axisLabel : {
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 yAxis : [
                     {
                         type : 'value',
                         min : 200,
-                        max : 450
+                        max : 450,
+                        axisLabel : {
+                            formatter: '{value} 人',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize:'14'
+                            }
+                        }
                     }
                 ],
                 series : [
