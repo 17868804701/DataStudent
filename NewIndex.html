@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大数据分析平台</title>
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("./bg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            /*background-position: center;*/
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 25px;
+            /*border: 1px solid red;*/
+            height: 4%;
+            text-shadow: 0 0 40px #0371ff;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+        }
+        .main{
+            height: 60%;
+            /*border: 1px solid red;*/
+            display: flex;;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .main_bottom{
+            margin-top: 70px;
+            height: 20%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+        .time{
+            position: absolute;
+            right: 80px;
+            top:50px;
+            color: #2982e6;
+        }
+        .content{
+            width: 12%;
+            height:100%;
+            border:35px solid rgba(255, 255, 255, 0);
+            border-image: url("./border-bg.png") 35 fill;
+        }
+        .content2{
+            width: 42%;
+            height:100%;
+            border:35px solid rgba(255, 255, 255, 0);
+            border-image: url("./border-bg.png") 35 fill;
+        }
+        .content3{
+            width: 32%;
+            height:100%;
+            border:35px solid rgba(255, 255, 255, 0);
+            border-image: url("./border-bg.png") 35 fill;
+        }
+        .content4{
+            width: 45%;
+            height:75%;
+            border:35px solid rgba(255, 255, 255, 0);
+            border-image: url("./border-bg.png") 35 fill;
+            float: left;
+            margin-top: 10px;
+        }
+        .content5{
+            width: 45%;
+            height:75%;
+            border:35px solid rgba(255, 255, 255, 0);
+            border-image: url("./border-bg.png") 35 fill;
+            float: left;
+            margin-top: 10px;
+        }
+        .title{
+            position: absolute;
+            color: white;
+            margin-top: -15px;
+            font-size: 17px;
+            font-family: 微软雅黑;
+        }
+    </style>
+    <script>
+        $(function () {
+            var height = $(window).height();
+            $("body").height(height)
+        })
+    </script>
+</head>
+<body>
+<header>
+    <h1>智慧校园大数据分析平台</h1>
+    <!--⌚-->
+    <span class="time">Time: 2018-03-06 11:02:35</span>
+</header>
+<div class="main">
+    <div class="content">
+        <span class="title">这里是标题</span>
+    </div>
+    <div class="content2">
+        <span class="title">这里是标题</span>
+    </div>
+    <div class="content3">
+        <span class="title">这里是标题</span>
+    </div>
+</div>
+<div class="main_bottom">
+    <div class="content4">
+        <span class="title">这里是标题</span>
+    </div>
+    <div class="content5">
+        <span class="title">这里是标题</span>
+    </div>
+</div>
+</body>
+</html>
